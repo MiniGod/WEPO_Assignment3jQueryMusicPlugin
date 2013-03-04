@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>The latest and greatest music player</title>
+    <!-- TODO: a link to a .css file containing default styles for the music player -->
+    <link rel="stylesheet" type="text/css" href="audioplayer.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-responsive.css">
+    <!-- TODO: jQuery (CDN) reference -->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <!-- JQUERY UI reference -->
+    <script src="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"></script>
+    
+    <!-- TODO: Modernizr reference -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+    <!-- TODO: your MusicPlayer jQuery plugin reference!!!! -->
+
+ 
+
+
+</head>
+<body>
+    <div class="row-fluid">
+    <div id="thePlayer" class="span8 offset2">
+        <button id="prevSong">previous song</button>
+        <button id="rewind">rewind</button>
+        <button id="play">play</button>
+        <button id="stop">stop</button>
+        <button id="fforward">fast forward</button>
+        <button id="nextSong">next song</button>
+        <meter id="progress" min="0" max="100" value="50"></meter>
+
+        <input type="checkbox" id="shuffle" /><label for ="shuffle">Shuffle</label>
+
+        <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
+        <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
+        <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
+    </div> <!-- this element will host the player!! -->
+        </div>
+
+    <div class="span4 offset4">
+    <p>The latest and greatest music player</p>
+    </div>
+    <script type="text/javascript" >
+
+        $(document).ready(function () {
+
+            // Note: this version assumes a JavaScript array of songs, but
+            // the other approach is also acceptable
+            var playlist = ["http://path.to/first_song.mp3",
+                             "http://path.to/second_song.mp3",
+                             "http://path.to/third_song.mp3"];
+
+            $("#thePlayer").musicPlayer(playlist);
+            // Optionally, the function should accept an object containing optional values, 
+            // such as a boolean "autostart" value, i.e. if the player should start playing
+            // immediately etc.
+        });
+
+    </script>
+</body>
+</html>
