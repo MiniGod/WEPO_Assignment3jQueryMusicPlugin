@@ -3,7 +3,8 @@
 (function($) {
 	var defaultOptions = {
 		'autoplay': false,
-		'repeat': false
+		'repeat': 0, // 0: Off, 1: Repeat One, 2: Repeat Playlist
+		'shuffle': false
 	};
 
 	$.fn.musicPlayer = function(playlist, options) {
@@ -19,12 +20,37 @@
 			var state =
 			{	playing: options.autoplay // Wether or not the player SHOULD be playing
 			,	index: -1
-			,	url: ''
-			,	volume: 100
-			,	time: 0
-			,	duration: 0
+			,	shuffle: options.shuffle
+			,	repeat: options.repeat
 			}
 
+			
+			/********************/
+			/* HELPER FUNCTIONS */
+			/********************/
+			var getSongAtIndex = function(i) {
+				if (i<0 || i>playlist.length-1)
+					return false;
+
+				var song = playlist[i];
+
+				// If song is a URL, try to parse out the name
+				if (typeof song == 'string') {
+					var name = song.substring(song.lastIndexOf('/')+1);
+					name = decodeURIComponent(name);
+
+					return {
+						url: song,
+						name: name
+					};
+				}
+				// Otherwise, expect it to be an object
+				else {
+					return song;
+				}
+			}
+
+			
 			/***********/
 			/* ACTIONS */
 			/***********/
@@ -41,22 +67,46 @@
 			}
 
 			var next = function() {
-				state.index++;
-				state.index %= playlist.length;
 
-				var url = playlist[state.index];
+				// Shuffle choice of next song
+				if (state.shuffle) {
+					var prevIndex = state.index;
+
+					// Shuffle to an index other than it self (unless playlist size is 0)
+					do {
+						state.index += Math.floor(Math.random() * playlist.length);
+						state.index %= playlist.length;
+					} while (state.index == prevIndex && playlist.length > 1);
+				}
+				// Increase index unless its repeat-one
+				else if (state.repeat != 1) {
+					state.index++;
+
+					// If repeat-playlist, then circle index
+					if (state.repeat == 2)
+						state.index %= playlist.length;
+				}
+
+				// If this index is "out of bounds", set index to 0, and stop it.
+				// Happens if repeat is off
+				if (state.index > playlist.length-1) {
+					state.index = -1;
+					stop();
+					return;
+				}
+
+				var url = getSongAtIndex(state.index).url;
 
 				player.attr('src', url);
 
 				if (state.playing) player.get(0).play();
 			}
 
-			//Previous song, but doesn't cycle backwards, only goes to the first one
 			var prev = function() {
-				state.index--;
+				state.index += playlist.length - 1;
 				state.index %= playlist.length;
 
-				var url = playlist[state.index];
+				var url = getSongAtIndex(state.index).url;
 
 				player.attr('src', url);
 
@@ -64,7 +114,7 @@
 			}
 
 
-			// Gets or sets the volume - 0 to 100
+			// Gets or sets the volume - between 0 to 100
 			var volume = function(vol) {
 				if (vol) return player.get(0).volume = vol/100;
 				return player.get(0).volume / 100;

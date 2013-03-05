@@ -64,13 +64,15 @@
             // Note: this version assumes a JavaScript array of songs, but
             // the other approach is also acceptable
 
-            var playlist = ["http://internet.is/olinn/12%20Smooth%20Criminal.mp3",
+            var playlist = [{name: "Smooth Criminal", url: "http://internet.is/olinn/12%20Smooth%20Criminal.mp3"},
                              "http://internet.is/olinn/03.%20Mumford%20&%20Sons%20-%20I%20Will%20Wait.mp3",
                              "http://internet.is/olinn/01.%20We%20Are%20Scientists%20-%20Ghouls.mp3"
                             ];
 
-
-            $("#thePlayer").musicPlayer(playlist);
+            $("#thePlayer").musicPlayer(playlist, {
+                autostart: true,
+                shuffle: true
+            });
             // Optionally, the function should accept an object containing optional values, 
             // such as a boolean "autostart" value, i.e. if the player should start playing
             // immediately etc.
