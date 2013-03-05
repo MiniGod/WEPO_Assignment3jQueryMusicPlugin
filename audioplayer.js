@@ -57,13 +57,14 @@
 			var play = function() {
 				state.playing = true;
 				player.get(0).play();
-				$('#play').removeClass("pause");
+				$('#play').addClass("pause");
+				
 			}
 
 			var pause = function() {
 				state.playing = false;
 				player.get(0).pause();
-				$('#play').addClass("pause");
+				$('#play').removeClass("pause");
 			}
 
 			var next = function() {
