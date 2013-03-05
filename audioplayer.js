@@ -13,7 +13,7 @@
 	</div>\
 	\
 	<div>\
-		<img src="volume.png" class="volumeIcon"></img>\
+		<img src="img/volume.png" class="volumeIcon"></img>\
 		<input type="range" class="volume" name="volume" min="0" value="100" max="100">\
 	</div>\
 	\
