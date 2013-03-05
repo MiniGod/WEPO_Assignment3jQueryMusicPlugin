@@ -115,11 +115,7 @@
 				state.index += playlist.length - 1;
 				state.index %= playlist.length;
 
-				var url = getSongAtIndex(state.index).url;
-
-				player.attr('src', url);
-
-				if (state.playing) player.get(0).play();
+				playIndex(index);
 			}
 
 			var repeat = function() {
