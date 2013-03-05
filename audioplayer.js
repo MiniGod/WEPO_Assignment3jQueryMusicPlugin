@@ -1,3 +1,5 @@
+//jquery implementation of audioplayer
+
 (function($) {
 	var defaultOptions = {
 		'autoplay': false,
@@ -35,6 +37,11 @@
 				state.playing = false;
 				player.get(0).pause();
 			}
+			//Im basically recycling much of your code, in everything.
+			var stop = function() {
+				state.playing = false;
+				player.get(0).stop();
+			}
 
 			var next = function() {
 				state.index++;
@@ -47,23 +54,65 @@
 				if (state.playing) player.get(0).play();
 			}
 
+			//Previous song, but doesn't cycle backwards, only goes to the first one
+			var prev = function() {
+				state.index--;
+				state.index %= playlist.length;
+
+				var url = playlist[state.index];
+
+				player.attr('src', url);
+
+				if (state.playing) player.get(0).play();
+			}
+			//unfinished
+			var volume = function() {
+				player.get(0).volume();
+			}
+
+			// need to implement the loop() command to loop song.
+
 			/*****************/
 			/* BUTTON EVENTS */
 			/*****************/
 			$(this).find('#play').on('click', function(e) {
 				e.preventDefault();
-				play();
+				//The play button now plays/pauses
+				if(state.playing == true)
+				{
+					pause();
+				}
+				else
+				{
+					play();	
+				}
+				
 			});
-
+			//stop() is a should stop all <audio> doesn't work, i'm an idiot :) We actually dont have to implement this.
 			$(this).find('#stop').on('click', function(e) {
 				e.preventDefault();
-				pause();
+				stop();
 			});
 
 			$(this).find('#nextSong').on('click', function(e) {	
 				e.preventDefault();
 				next();
 			});
+
+			$(this).find('#prevSong').on('click', function(e) {	
+				e.preventDefault();
+				prev();
+			});
+
+			//Volume control implementation, maybe a jquery slider is more suitable
+			//no idea how to do this --->(o.o)<<
+			$(this).find('#volume').on('click', function(e) {	
+				var value = $("#volume").attr("value");
+				this.volume = value;
+       		 	
+			});
+
+			 
 
 			/*****************/
 			/* PLAYER EVENTS */
@@ -73,6 +122,7 @@
 				var percent = (this.currentTime / this.duration) * 100;
 				$('#progress').eq(0).attr('value', percent);
 			});
+
 
 			// Loads the first song into the <audio> tag
 			next();

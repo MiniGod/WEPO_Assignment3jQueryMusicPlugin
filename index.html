@@ -3,8 +3,12 @@
 <head>
     <title>The latest and greatest music player</title>
     <!-- TODO: a link to a .css file containing default styles for the music player -->
+   
     <link rel="stylesheet" type="text/css" href="audioplayer.css">
-    <link rel="stylesheet" type="text/css" href="bootstrap-responsive.css">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
+    <script src="js/bootstrap.min.js"></script>
+
+
     <!-- TODO: jQuery (CDN) reference -->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <!-- JQUERY UI reference -->
@@ -14,6 +18,10 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
     <!-- TODO: your MusicPlayer jQuery plugin reference!!!! -->
     <script src="audioplayer.js"></script>
+    <!-- JQUERY UI for player look -->
+   
+  
+
 
  
 
@@ -21,22 +29,28 @@
 </head>
 <body>
     <div class="row-fluid">
-    <div id="thePlayer" class="span8 offset2">
-        <button id="prevSong">previous song</button>
-        <button id="rewind">rewind</button>
-        <button id="play">play</button>
-        <button id="stop">stop</button>
-        <button id="fforward">fast forward</button>
-        <button id="nextSong">next song</button>
-        <meter id="progress" min="0" max="100" value="50"></meter>
+        
+            <div id="thePlayer" class="span8 offset2">
+                <!--Working on more visual way for icons, either just using images or something.. -->
+                <!-- twitter bootstrap actually has a bunch of icons we could tap into, have to finish it tomorrow -->
+                <button id="prevSong"><p>previous song</button>
+                <!--<button id="rewind">rewind</button>-->
+                <button id="play">Play</button>
+                <button id="stop">stop</button>
+                <!--<button id="fforward">fast forward</button>-->
+                <button id="nextSong">next song</button>
+                <meter id="progress" min="0" max="100" value="0"></meter>
 
-        <input type="checkbox" id="shuffle" /><label for ="shuffle">Shuffle</label>
+                <input type="checkbox" id="shuffle" /><label for ="shuffle">Shuffle</label>
 
-        <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
-        <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
-        <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
-    </div> <!-- this element will host the player!! -->
-        </div>
+                <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
+                <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
+                <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
+
+                <!-- Volume thingamabob, not sure if we should use range or just jquery ui slider -->
+                <input type="range" id="volume" name="volume" min="0" value="0" max="100">
+            </div> <!-- this element will host the player!! -->
+    </div>
 
     <div class="span4 offset4">
     <p>The latest and greatest music player</p>
@@ -47,8 +61,12 @@
 
             // Note: this version assumes a JavaScript array of songs, but
             // the other approach is also acceptable
-            var playlist = ["http://gq.is/e05cf081",
-                             "http://gq.is/b7e4785e"];
+
+            var playlist = ["http://internet.is/olinn/12%20Smooth%20Criminal.mp3",
+                             "http://internet.is/olinn/03.%20Mumford%20&%20Sons%20-%20I%20Will%20Wait.mp3",
+                             "http://internet.is/olinn/01.%20We%20Are%20Scientists%20-%20Ghouls.mp3"
+                            ];
+
 
             $("#thePlayer").musicPlayer(playlist);
             // Optionally, the function should accept an object containing optional values, 
