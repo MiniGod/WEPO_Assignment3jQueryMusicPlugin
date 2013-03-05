@@ -12,34 +12,34 @@
     <!-- Audio player script-->
     <script src="audioplayer.js"></script>
     
+    <script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
 
+
+  
 </head>
 <body>
     
         
-            <div id="thePlayer">
+            <div id="thePlayer" class="audioPlayer">
                 <!--Working on more visual way for icons, either just using images or something.. -->
                 <!-- twitter bootstrap actually has a bunch of icons we could tap into, have to finish it tomorrow -->
                   
                     <div>
 
-                        <button id="prevSong"></button>
-                        <button id="play" class="play"></button>           
-                        <button id="nextSong"></button>
-                        <button type="button" id="shuffle" class="shuffle" /></button>                        
-                        <button id="repeat" class="repeatNone"></button>
-                        <meter id="progress" min="0" max="100" value="0"></meter><p id="songTime">4:32/0:35</p>
+                        <button class="prevSong" ></button>
+                        <button class="play"></button>           
+                        <button class="nextSong"></button>
+                        <button type="button" class="shuffle" /></button>                        
+                        <button class="repeat" class="repeatNone"></button>
+                        <meter class="progress" min="0" max="100" value="0"></meter><p id="songTime">4:32/0:35</p>
                     </div>
+
                     <div>
-                      
-                        <!--<button id="repeat" class="repeatOne"></button>
-                        <button id="repeat" class="repeatAll"></button>-->
-
-
-                        <input type="range" id="volume" name="volume" min="0" value="100" max="100">                      
+                        <img src="volume.png" class="volumeIcon"></img>
+                        <input type="range" class="volume" name="volume" min="0" value="100" max="100">  
                     </div>
 
-                    <div id="playlist">
+                    <div class="playlist">
                         <h2>Playlist</h2>
                             <ul>
                                 <li>SONGLIST</li>

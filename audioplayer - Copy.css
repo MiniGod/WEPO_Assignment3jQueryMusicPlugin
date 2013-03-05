@@ -5,7 +5,7 @@ body { background-color: #000;}
 
 
 
-.audioPlayer {
+#thePlayer {
 			float:center;
 			margin-left: 25em;
 			height: 20em;
@@ -31,7 +31,7 @@ body { background-color: #000;}
 						}
 
 
-.audioPlayer button {
+#thePlayer button {
 
  			display: inline;
  			border:none; 			
@@ -42,42 +42,32 @@ body { background-color: #000;}
 }
 
 
-
-
-.playlist h2{
+#playlist h2{
 			color: #333;
 			text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
 }
 
-.playlist
-{
-	margin-top:1em;
-	
-	border-top: 1px solid #6b6b6b;
-}
-
-.playlist ul {
+#playlist ul {
 				margin-left: -2em;
 }
-.playlist ul li {
-				list-style-type:none;
+#playlist ul li {
+				list-style-type:none;		
+				
 				padding-top: 0.4em;
 				text-align:center;
-				font: 0.9em/0.9em "Armata";	
-				color: #333;			
+				font: bold 0.9em/0.9em "Armata";					
 				cursor: pointer;
 }
 
 
-.playlist ul li.playing {
+#playlist ul li.playing {
 	/* TODO: add icon to show that its playing */
-	color:#000;
-	font-style: bold;
+	text-decoration: underline;
 }
 
-.playlist ul li:hover {
-	text-shadow: 0px 1px 0px rgba(255,255,255,.5);
-	
+#playlist ul li:hover {
+	color: #f00;
+	color: #2242f7;
 }
 	
 
@@ -110,10 +100,10 @@ body { background-color: #000;}
 }
 
 
-.nextSong {background-image:url('forward.png');
+#nextSong {background-image:url('forward.png');
 		background-size: 100% 100%;
 	}
-.prevSong {background-image:url('backward.png');
+#prevSong {background-image:url('backward.png');
 		background-size: 100% 100%;
 	}
 
@@ -129,16 +119,18 @@ body { background-color: #000;}
 }
 
 
-.songTime {
+#songTime {
 		
 		padding-top: 0.3em;
 		font: bold 1em/1em "Armata";
 		color: #333;
 		text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
 }
+#repeat0 {
+		padding-top: 2em;
+}
 
-
-.progress {
+#progress {
 	color: #0063a6;
 	/*
 
@@ -151,19 +143,14 @@ body { background-color: #000;}
 	  width: 150px;
 	  height: 20px;
 	  border: 1px solid black;
-	  
+	  background-color: #000;
 
 	  border-radius:0.2em;
 			-moz-border-radius:0.2em; /* Old Firefox */
 
 }
 
-.volumeIcon {
-		height: 2em;
-		width: 2em;
-}
-
-
-
+range::-webkit-appearance: slider-horizontal;
+progress::-webkit-progress-bar { background: #fff; }
 
 
