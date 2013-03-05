@@ -59,7 +59,7 @@
 				for (var i in playlist) {
 					if (song = getSongAtIndex(i)) {
 						var li = $('<li>').text(song.name).data('index', i).on('click', function() {
-							playIndex(root.data('index'));
+							playIndex($(this).data('index'));
 							play();
 						});
 
