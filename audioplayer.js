@@ -209,7 +209,7 @@
 			});
 
 			root.find('.volume').on('change', function(e) {	
-				var value = root.get(0).value;
+				var value = $(this).get(0).value;
 				volume(value);
 			});
 
