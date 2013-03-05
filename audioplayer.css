@@ -1,27 +1,11 @@
 // Audioplayer 
 
+
 p { font-size: 20px;}
 
 
 #thePlayer {
-			/* IE10 Consumer Preview */ 
-			background-image: -ms-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #000000 100%);
-
-			/* Mozilla Firefox */ 
-			background-image: -moz-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #000000 100%);
-
-			/* Opera */ 
-			background-image: -o-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #000000 100%);
-
-			/* Webkit (Safari/Chrome 10) */ 
-			background-image: -webkit-gradient(radial, center center, 0, center center, 506, color-stop(0, #FFFFFF), color-stop(1, #000000));
-
-			/* Webkit (Chrome 11+) */ 
-			background-image: -webkit-radial-gradient(center, ellipse farthest-corner, #FFFFFF 0%, #000000 100%);
-
-			/* W3C Markup, IE10 Release Preview */ 
-			background-image: radial-gradient(ellipse farthest-corner at center, #FFFFFF 0%, #000000 100%);
-			font-color: white;
+			
 
 			border:2px solid;
 			border-radius:5px;
@@ -32,18 +16,44 @@ p { font-size: 20px;}
 			}
 
 #thePlayer button {
-			
+
  			display: inline;
- 			border:1px solid black;
+ 			border:none;
+ 			
  			width: 40px;
  			height:40px;
- 			 
-			border-radius:5px;
-			-moz-border-radius:5px; /* Old Firefox */
+ 			 background-color:transparent;
+			
 
 }
 
 
-#play {background-image:url('play.png');
+.play {background-image:url('play.png');
+		background-size: 100% 100%;
+
+	}
+
+.pause {
+
+	background-image:url('pause.png');
+		background-size: 100% 100%;
+}
+#nextSong {background-image:url('forward.png');
 		background-size: 100% 100%;
 	}
+#prevSong {background-image:url('backward.png');
+		background-size: 100% 100%;
+	}
+
+#progress {
+	color: #0063a6;
+	padding-top:20px;
+  
+  
+	  width: 150px;
+	  height: 20px;
+	  border: 1px solid #0063a6;
+	  background: #fff;
+}
+
+progress::-webkit-progress-bar { background: #fff; }
