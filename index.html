@@ -27,26 +27,30 @@
             <div id="thePlayer" class="span8 offset2">
                 <!--Working on more visual way for icons, either just using images or something.. -->
                 <!-- twitter bootstrap actually has a bunch of icons we could tap into, have to finish it tomorrow -->
-               
-                <button id="prevSong"></button>
-                <!--<button id="rewind">rewind</button>-->
+                  
+                    <div class="span4">
 
-                <button id="play" class="play"></button>
-                
+                          <button id="prevSong"></button>
+                            
 
-                <!--<button id="fforward">fast forward</button>-->
-                <button id="nextSong"></button>
-                <meter id="progress" min="0" max="100" value="0"></meter>
+                        <button id="play" class="play"></button>               
 
-                <input type="checkbox" id="shuffle" /><label for ="shuffle">Shuffle</label>
+                   
+                        <button id="nextSong"></button>
+                        <meter id="progress" min="0" max="100" value="0"></meter>
+                    </div>
+                    <div class="span4">
+                        <input type="checkbox" id="shuffle" /><label for ="shuffle">Shuffle</label>
 
-                <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
-                <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
-                <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
+                        <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
+                        <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
+                        <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
 
-                <!-- Volume thingamabob, not sure if we should use range or just jquery ui slider -->
-                <input type="range" id="volume" name="volume" min="0" value="100" max="100">
+                        <!-- Volume thingamabob, not sure if we should use range or just jquery ui slider -->
+                        <input type="range" id="volume" name="volume" min="0" value="100" max="100">                      
+                    </div>
             </div> <!-- this element will host the player!! -->
+
 
     </div>
 
