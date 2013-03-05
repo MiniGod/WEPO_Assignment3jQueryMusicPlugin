@@ -86,9 +86,23 @@
 			}
 
 			var repeat = function() {
-				state.playing = true;
-				
-				
+				state.repeat++;
+				state.repeat %= 3;
+
+				// 0: off
+				// 1: one
+				// 2: all
+				var states = [
+					'repeatNone',
+					'repeatOne',
+					'repeatAll'
+				];
+
+				var el = root.find('#repeat');
+				for (var i=0; i<3; i++) {
+					if (i == state.repeat) el.addClass(states[i]);
+					else el.removeClass(states[i]);
+				}
 			}
 
 			var next = function() {
