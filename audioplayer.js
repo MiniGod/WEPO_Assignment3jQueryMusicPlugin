@@ -184,8 +184,24 @@
 			/*****************/
 
 			player.on('timeupdate', function(e) {
+				// Update progress-bar
 				var percent = (this.currentTime / this.duration) * 100;
-				$('#progress').eq(0).attr('value', percent);
+				root.find('#progress').eq(0).attr('value', percent);
+
+				// Update time counter
+				var two = function(a) {
+					return (a < 10) ? '0'+a : a;
+				}
+				var minutes, seconds;
+				minutes = Math.floor(this.currentTime / 60);
+				seconds = Math.floor(this.currentTime % 60);
+				var played = [minutes, two(seconds)].join(':');
+
+				minutes = Math.floor(this.duration / 60);
+				seconds = Math.floor(this.duration % 60);
+				var duration = [minutes, two(seconds)].join(':');
+
+				root.find('#songTime').text([played, duration].join('/'));
 			});
 
 			player.on('ended', next);
