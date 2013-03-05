@@ -65,9 +65,11 @@
 
 				if (state.playing) player.get(0).play();
 			}
-			//unfinished
-			var volume = function() {
-				player.get(0).volume();
+
+			// Gets or sets the volume - 0 to 100
+			var volume = function(vol) {
+				if (vol) return player.get(0).volume = vol/100;
+				return player.get(0).volume / 100;
 			}
 
 			// need to implement the loop() command to loop song.
@@ -84,7 +86,7 @@
 				}
 				else
 				{
-					play();	
+					play();
 				}
 				
 			});
@@ -105,11 +107,9 @@
 			});
 
 			//Volume control implementation, maybe a jquery slider is more suitable
-			//no idea how to do this --->(o.o)<<
-			$(this).find('#volume').on('click', function(e) {	
-				var value = $("#volume").attr("value");
-				this.volume = value;
-       		 	
+			$(this).find('#volume').on('change', function(e) {	
+				var value = $(this).get(0).value;
+				volume(value);
 			});
 
 			 
