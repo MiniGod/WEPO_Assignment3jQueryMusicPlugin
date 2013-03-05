@@ -55,6 +55,16 @@ body { background-color: #000;}
 				padding-top: 0.4em;
 				text-align:center;
 				font: bold 0.9em/0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;					
+				cursor: pointer;
+}
+
+#thePlayer ul li.playing {
+	/* TODO: add icon to show that its playing */
+	text-decoration: underline;
+}
+
+#thePlayer ul li:hover {
+	color: #f00;
 }
 	
 

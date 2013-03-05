@@ -60,6 +60,7 @@
 					if (song = getSongAtIndex(i)) {
 						var li = $('<li>').text(song.name).data('index', i).on('click', function() {
 							playIndex($(this).data('index'));
+							play();
 						});
 
 						ul.append(li);
@@ -86,38 +87,28 @@
 
 			var next = function() {
 
+				var index = state.index;
+
 				// Shuffle choice of next song
 				if (state.shuffle) {
-					var prevIndex = state.index;
+					var prevIndex = index;
 
 					// Shuffle to an index other than it self (unless playlist size is 0)
 					do {
-						state.index += Math.floor(Math.random() * playlist.length);
-						state.index %= playlist.length;
-					} while (state.index == prevIndex && playlist.length > 1);
+						index += Math.floor(Math.random() * playlist.length);
+						index %= playlist.length;
+					} while (index == prevIndex && playlist.length > 1);
 				}
 				// Increase index unless its repeat-one
 				else if (state.repeat != 1) {
-					state.index++;
+					index++;
 
 					// If repeat-playlist, then circle index
 					if (state.repeat == 2)
-						state.index %= playlist.length;
+						index %= playlist.length;
 				}
 
-				// If this index is "out of bounds", set index to 0, and stop it.
-				// Happens if repeat is off
-				if (state.index > playlist.length-1) {
-					state.index = -1;
-					stop();
-					return;
-				}
-
-				var url = getSongAtIndex(state.index).url;
-
-				player.attr('src', url);
-
-				if (state.playing) player.get(0).play();
+				playIndex(index);
 			}
 
 			var prev = function() {
@@ -139,12 +130,23 @@
 			}
 
 			var playIndex = function(index) {
-				state.index = index-1;
-				var shuffle = state.shuffle;
-				state.shuffle = false;
-				next();
-				state.shuffle = shuffle;
-				// lulz
+				state.index = index;
+				// If this index is "out of bounds", set index to 0, and stop it.
+				// Happens if repeat is off
+				var song = getSongAtIndex(state.index);
+				if (!song) {
+					state.index = -1;
+					stop();
+					return;
+				}
+
+				var lis = root.find('#playlist ul li')
+					.removeClass('playing')
+					.eq(index).addClass('playing');
+
+				player.attr('src', song.url);
+
+				if (state.playing) player.get(0).play();
 			}
 
 			// need to implement the loop() command to loop song.
@@ -201,7 +203,10 @@
 				seconds = Math.floor(this.duration % 60);
 				var duration = [minutes, two(seconds)].join(':');
 
-				root.find('#songTime').text([played, duration].join('/'));
+				var songTime = [played, duration].join('/');
+				if (songTime.indexOf('NaN')!==-1) songTime = '0:00/0:00';
+
+				root.find('#songTime').text(songTime);
 			});
 
 			player.on('ended', next);
