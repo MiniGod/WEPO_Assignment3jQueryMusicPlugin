@@ -37,11 +37,6 @@
 				state.playing = false;
 				player.get(0).pause();
 			}
-			//Im basically recycling much of your code, in everything.
-			var stop = function() {
-				state.playing = false;
-				player.get(0).stop();
-			}
 
 			var next = function() {
 				state.index++;
@@ -89,11 +84,6 @@
 					play();
 				}
 				
-			});
-			//stop() is a should stop all <audio> doesn't work, i'm an idiot :) We actually dont have to implement this.
-			$(this).find('#stop').on('click', function(e) {
-				e.preventDefault();
-				stop();
 			});
 
 			$(this).find('#nextSong').on('click', function(e) {	
