@@ -204,15 +204,15 @@
 				// Update time counter
 				var two = function(a) {
 					return (a < 10) ? '0'+a : a;
-				}
-				var minutes, seconds;
+				}, minutes, seconds, played, duration;
+				
 				minutes = Math.floor(this.currentTime / 60);
 				seconds = Math.floor(this.currentTime % 60);
-				var played = [minutes, two(seconds)].join(':');
+				played = [minutes, two(seconds)].join(':');
 
 				minutes = Math.floor(this.duration / 60);
 				seconds = Math.floor(this.duration % 60);
-				var duration = [minutes, two(seconds)].join(':');
+				duration = [minutes, two(seconds)].join(':');
 
 				var songTime = [played, duration].join('/');
 				if (songTime.indexOf('NaN')!==-1) songTime = '0:00/0:00';
