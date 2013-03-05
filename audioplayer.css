@@ -6,12 +6,12 @@ body { background-color: #000;}
 
 
 #thePlayer {
-			position: relative;
-			margin: 1em auto;
+			float:center;
+			margin-left: 25em;
 			height: 20em;
 			width: 20em;
 			text-align:center;
-			font: bold 0.9em/0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			font: bold 0.9em/0.9em "Armata";
 
 			background-image: 	-webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),					
 						-webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),					
@@ -41,25 +41,31 @@ body { background-color: #000;}
  			margin-top: 1em; 					 
 }
 
-#thePlayer ul {
+
+#playlist h2{
+			color: #333;
+			text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
+}
+
+#playlist ul {
 				margin-left: -2em;
 }
-#thePlayer ul li {
+#playlist ul li {
 				list-style-type:none;		
 				
 				padding-top: 0.4em;
 				text-align:center;
-				font: bold 0.9em/0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;					
+				font: bold 0.9em/0.9em "Armata";					
 				cursor: pointer;
 }
 
 
-#thePlayer ul li.playing {
+#playlist ul li.playing {
 	/* TODO: add icon to show that its playing */
 	text-decoration: underline;
 }
 
-#thePlayer ul li:hover {
+#playlist ul li:hover {
 	color: #f00;
 	color: #2242f7;
 }
@@ -101,25 +107,28 @@ body { background-color: #000;}
 		background-size: 100% 100%;
 	}
 
-#shuffle {
+.shuffle {
 		background-image:url('shuffle.png');
 		background-size: 100% 100%;	
 }
 
-#shuffle .active {
-		border-color: #2046ad;
+.shuffleOn {
+
+			background-image:url('shuffleON.png');
+			background-size: 100% 100%;	
 }
 
+
 #songTime {
-		font-size: 1em;
+		
 		padding-top: 0.3em;
-		font: bold 1em/1em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		font: bold 1em/1em "Armata";
+		color: #333;
+		text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
 }
 #repeat0 {
 		padding-top: 2em;
 }
-
-
 
 #progress {
 	color: #0063a6;

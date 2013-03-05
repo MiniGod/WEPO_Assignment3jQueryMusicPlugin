@@ -2,23 +2,16 @@
 <html>
 <head>
     <title>The latest and greatest music player</title>
-    <!-- TODO: a link to a .css file containing default styles for the music player -->
-   
+    <!-- Audio player stylesheet -->   
     <link rel="stylesheet" type="text/css" href="audioplayer.css">
-    <!--<link href="css/bootstrap-responsive.css" rel="stylesheet" media="screen">
-    <script src="js/bootstrap.min.js"></script>-->
-
-
-    <!-- TODO: jQuery (CDN) reference -->
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <!-- JQUERY UI reference 
-    <script src="http://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css"></script>-->
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>   
+    <!--Google fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Armata' rel='stylesheet' type='text/css'> 
     
-    <!-- TODO: Modernizr reference -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
-    <!-- TODO: your MusicPlayer jQuery plugin reference!!!! -->
+    <!-- Audio player script-->
     <script src="audioplayer.js"></script>
-    <!-- JQUERY UI for player look -->
+    
 
 </head>
 <body>
@@ -30,19 +23,15 @@
                   
                     <div>
 
-                          <button id="prevSong"></button>
-                            
-
-                        <button id="play" class="play"></button>               
-
-                   
+                        <button id="prevSong"></button>
+                        <button id="play" class="play"></button>           
                         <button id="nextSong"></button>
+                        <button type="button" id="shuffle" class="shuffle" /></button>                        
+                        <button id="repeat" class="repeatNone"></button>
                         <meter id="progress" min="0" max="100" value="0"></meter><p id="songTime">4:32/0:35</p>
                     </div>
                     <div>
-                        <button type="button" id="shuffle" /></button>
-                        
-                        <button id="repeat" class="repeatNone"></button>
+                      
                         <!--<button id="repeat" class="repeatOne"></button>
                         <button id="repeat" class="repeatAll"></button>-->
 
@@ -51,11 +40,16 @@
                     </div>
 
                     <div id="playlist">
+                        <h2>Playlist</h2>
                             <ul>
                                 <li>SONGLIST</li>
                             </ul>
                     </div>
+
+                    
             </div> <!-- this element will host the player!! -->
+
+            
 
            
     <script type="text/javascript" >

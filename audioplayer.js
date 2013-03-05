@@ -142,6 +142,10 @@
 				if (state.playing) player.get(0).play();
 			}
 
+			var shuffle = function() {
+				//Missing shuffle furniz
+				$('#shuffle').toggleClass("shuffleOn");
+			}
 
 			// Gets or sets the volume - between 0 to 100
 			var volume = function(vol) {
@@ -168,6 +172,8 @@
 
 				if (state.playing) player.get(0).play();
 			}
+
+
 
 			// need to implement the loop() command to loop song.
 
@@ -201,6 +207,11 @@
 
 			$(this).find('#repeat').on('click', function(e) {
 				repeat();
+
+			});
+
+			$(this).find('#shuffle').on('click', function(e) {
+				shuffle();
 
 			});
 
