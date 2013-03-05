@@ -79,51 +79,51 @@ body { background-color: #000;}
 	
 
 /*Icons for buttons and classes for changes in those states */
-.audioPlayer .play {background-image:url('play.png');
+.audioPlayer .play {background-image:url('img/play.png');
 		background-size: 100% 100%;
 
 	}
 
 .audioPlayer .pause {
-	background-image:url('pause.png');
+	background-image:url('img/pause.png');
 		background-size: 100% 100%;
 }
-.audioPlayer .repeat {background-image:url('repeat_none.png');
+.audioPlayer .repeat {background-image:url('img/repeat_none.png');
 		background-size: 100% 100%;
 
 	}
 
-.audioPlayer .repeatNone {background-image:url('repeat_none.png');
+.audioPlayer .repeatNone {background-image:url('img/repeat_none.png');
 		background-size: 100% 100%;
 
 	}
 
 .audioPlayer .repeatOne {
-	background-image:url('repeat_one.png');
+	background-image:url('img/repeat_one.png');
 		background-size: 100% 100%;
 }
 
 .audioPlayer .repeatAll {
-	background-image:url('repeat_all.png');
+	background-image:url('img/repeat_all.png');
 		background-size: 100% 100%;
 }
 
 
-.audioPlayer .nextSong {background-image:url('forward.png');
+.audioPlayer .nextSong {background-image:url('img/forward.png');
 		background-size: 100% 100%;
 	}
-.audioPlayer .prevSong {background-image:url('backward.png');
+.audioPlayer .prevSong {background-image:url('img/backward.png');
 		background-size: 100% 100%;
 	}
 
 .audioPlayer .shuffle {
-		background-image:url('shuffle.png');
+		background-image:url('img/shuffle.png');
 		background-size: 100% 100%;	
 }
 
 .audioPlayer .shuffleOn {
 
-			background-image:url('shuffleON.png');
+			background-image:url('img/shuffleON.png');
 			background-size: 100% 100%;	
 }
 
