@@ -2,7 +2,7 @@
 
 body { background-color: #000;}
 
-p { font-size: 0.1em;}
+
 
 
 #thePlayer {
@@ -45,6 +45,18 @@ p { font-size: 0.1em;}
  			background-color:transparent;
  			margin-top: 1em; 					 
 }
+
+#thePlayer ul {
+				margin-left: -2em;
+}
+#thePlayer ul li {
+				list-style-type:none;		
+				
+				padding-top: 0.4em;
+				text-align:center;
+				font: bold 0.9em/0.9em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;					
+}
+	
 
 
 .play {background-image:url('play.png');
