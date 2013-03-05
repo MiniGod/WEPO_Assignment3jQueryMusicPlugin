@@ -13,6 +13,7 @@
 		// `this` is an array of elements
 		return this.each(function() {
 			// ´this´ is now one of the elements
+			var root = $(this);
 
 			var player = $('<audio>');
 			$(this).append(player);
@@ -22,8 +23,7 @@
 			,	index: -1
 			,	shuffle: options.shuffle
 			,	repeat: options.repeat
-			}
-
+			};
 			
 			/********************/
 			/* HELPER FUNCTIONS */
@@ -47,6 +47,23 @@
 				// Otherwise, expect it to be an object
 				else {
 					return song;
+				}
+			}
+
+			var updatePlaylistUI = function() {
+				// Create playlist
+				var ul = root.find('#playlist ul').eq(0);
+				ul.empty();
+
+				var song;
+				for (var i in playlist) {
+					if (song = getSongAtIndex(i)) {
+						var li = $('<li>').text(song.name).data('index', i).on('click', function() {
+							playIndex($(this).data('index'));
+						});
+
+						ul.append(li);
+					}
 				}
 			}
 
@@ -121,6 +138,15 @@
 				return player.get(0).volume / 100;
 			}
 
+			var playIndex = function(index) {
+				state.index = index-1;
+				var shuffle = state.shuffle;
+				state.shuffle = false;
+				next();
+				state.shuffle = shuffle;
+				// lulz
+			}
+
 			// need to implement the loop() command to loop song.
 
 			/*****************/
@@ -130,15 +156,9 @@
 				e.preventDefault();
 				//The play button now plays/pauses
 				if(state.playing == true)
-				{
-					pause();	
-				}
+					pause();
 				else
-				{
 					play();
-					
-				}
-
 			});
 
 			$(this).find('#nextSong').on('click', function(e) {	
@@ -168,8 +188,14 @@
 				$('#progress').eq(0).attr('value', percent);
 			});
 
+			player.on('ended', next);
 
-			// Loads the first song into the <audio> tag
+			// @TODO: Might go into a infinite loop/cycle through the playlist if every song gives error...
+			player.on('error', next);
+
+			/***************/
+			/***************/
+			updatePlaylistUI();
 			next();
 		});
 	};
