@@ -4,7 +4,7 @@ body { background-color: #000;}
 
 
 
-
+/*Styling for the player container, metallic background etc */
 .audioPlayer {
 			float:center;
 			margin-left: 25em;
@@ -30,7 +30,7 @@ body { background-color: #000;}
 			-webkit-transition: color .2s;
 						}
 
-
+/*Styling of size and other properties of the main buttons */
 .audioPlayer button {
 
  			display: inline;
@@ -40,9 +40,6 @@ body { background-color: #000;}
  			background-color:transparent;
  			margin-top: 1em; 					 
 }
-
-
-
 
 .playlist h2{
 			color: #333;
@@ -81,7 +78,7 @@ body { background-color: #000;}
 }
 	
 
-/*CHanes in play button */
+/*Icons for buttons and classes for changes in those states */
 .play {background-image:url('play.png');
 		background-size: 100% 100%;
 
@@ -92,7 +89,6 @@ body { background-color: #000;}
 		background-size: 100% 100%;
 }
 
-/*Repeat switch backgrounds*/
 
 .repeatNone {background-image:url('repeat_none.png');
 		background-size: 100% 100%;
@@ -128,7 +124,7 @@ body { background-color: #000;}
 			background-size: 100% 100%;	
 }
 
-
+/* Styling of the time counter */
 .songTime {
 		
 		padding-top: 0.3em;
@@ -137,19 +133,14 @@ body { background-color: #000;}
 		text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
 }
 
-
+/* Settings for the progress element.. or well those adjustments that are possible */
 .progress {
-	color: #0063a6;
-	/*
-
-	position: relative;
-	top: 10px;*/
-  
+	 
   	  float:left;
   	  margin-left: 2em;
   	  margin-top: 1em;
-	  width: 150px;
-	  height: 20px;
+	  height: 1.5em;
+	  width: 10em;
 	  border: 1px solid black;
 	  
 
