@@ -41,22 +41,22 @@ body { background-color: #000;}
  			margin-top: 1em; 					 
 }
 
-.playlist h2{
+.audioPlayer .playlist h2{
 			color: #333;
 			text-shadow: 0px 1px 0px rgba(255,255,255,.5); /* 50% white from bottom */
 }
 
-.playlist
+.audioPlayer .playlist
 {
 	margin-top:1em;
 	
 	border-top: 1px solid #6b6b6b;
 }
 
-.playlist ul {
+.audioPlayer .playlist ul {
 				margin-left: -2em;
 }
-.playlist ul li {
+.audioPlayer .playlist ul li {
 				list-style-type:none;
 				padding-top: 0.4em;
 				text-align:center;
@@ -66,66 +66,69 @@ body { background-color: #000;}
 }
 
 
-.playlist ul li.playing {
+.audioPlayer .playlist ul li.playing {
 	/* TODO: add icon to show that its playing */
 	color:#000;
 	font-style: bold;
 }
 
-.playlist ul li:hover {
+.audioPlayer .playlist ul li:hover {
 	text-shadow: 0px 1px 0px rgba(255,255,255,.5);
 	
 }
 	
 
 /*Icons for buttons and classes for changes in those states */
-.play {background-image:url('play.png');
+.audioPlayer .play {background-image:url('play.png');
 		background-size: 100% 100%;
 
 	}
 
-.pause {
+.audioPlayer .pause {
 	background-image:url('pause.png');
 		background-size: 100% 100%;
 }
-
-
-.repeatNone {background-image:url('repeat_none.png');
+.audioPlayer .repeat {background-image:url('repeat_none.png');
 		background-size: 100% 100%;
 
 	}
 
-.repeatOne {
+.audioPlayer .repeatNone {background-image:url('repeat_none.png');
+		background-size: 100% 100%;
+
+	}
+
+.audioPlayer .repeatOne {
 	background-image:url('repeat_one.png');
 		background-size: 100% 100%;
 }
 
-.repeatAll {
+.audioPlayer .repeatAll {
 	background-image:url('repeat_all.png');
 		background-size: 100% 100%;
 }
 
 
-.nextSong {background-image:url('forward.png');
+.audioPlayer .nextSong {background-image:url('forward.png');
 		background-size: 100% 100%;
 	}
-.prevSong {background-image:url('backward.png');
+.audioPlayer .prevSong {background-image:url('backward.png');
 		background-size: 100% 100%;
 	}
 
-.shuffle {
+.audioPlayer .shuffle {
 		background-image:url('shuffle.png');
 		background-size: 100% 100%;	
 }
 
-.shuffleOn {
+.audioPlayer .shuffleOn {
 
 			background-image:url('shuffleON.png');
 			background-size: 100% 100%;	
 }
 
 /* Styling of the time counter */
-.songTime {
+.audioPlayer .songTime {
 		
 		padding-top: 0.3em;
 		font: bold 1em/1em "Armata";
@@ -134,7 +137,7 @@ body { background-color: #000;}
 }
 
 /* Settings for the progress element.. or well those adjustments that are possible */
-.progress {
+.audioPlayer .progress {
 	 
   	  float:left;
   	  margin-left: 2em;
@@ -149,7 +152,7 @@ body { background-color: #000;}
 
 }
 
-.volumeIcon {
+.audioPlayer .volumeIcon {
 		height: 2em;
 		width: 2em;
 }
