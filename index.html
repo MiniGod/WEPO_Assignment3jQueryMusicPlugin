@@ -40,19 +40,13 @@
                         <meter id="progress" min="0" max="100" value="0"></meter><p id="songTime">4:32/0:35</p>
                     </div>
                     <div>
-                        <button type="button" id="shuffle" class="repeatNone"/></button>
-
+                        <button type="button" id="shuffle" /></button>
+                        
                         <button id="repeat" class="repeatNone"></button>
-                        <button id="repeat" class="repeatOne"></button>
-                        <button id="repeat" class="repeatAll"></button>
+                        <!--<button id="repeat" class="repeatOne"></button>
+                        <button id="repeat" class="repeatAll"></button>-->
 
 
-                        <!--
-                        <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
-                        <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
-                        <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>-->
-
-                        <!-- Volume thingamabob, not sure if we should use range or just jquery ui slider -->
                         <input type="range" id="volume" name="volume" min="0" value="100" max="100">                      
                     </div>
 
@@ -72,11 +66,19 @@
             // the other approach is also acceptable
 
             var playlist = [{
-                                name: "Smooth Criminal",
+                                name: "Alien Ant Farm - Smooth Criminal",
                                 url: "http://internet.is/olinn/12%20Smooth%20Criminal.mp3"
                             },
-                            "http://internet.is/olinn/03.%20Mumford%20&%20Sons%20-%20I%20Will%20Wait.mp3",
-                            "http://internet.is/olinn/01.%20We%20Are%20Scientists%20-%20Ghouls.mp3"
+                               {
+                                name: "Mumford and Sons - I Will wait",
+                                url: "http://internet.is/olinn/03.%20Mumford%20&%20Sons%20-%20I%20Will%20Wait.mp3"
+                            },
+                            {
+                                name: "We Are Scientists - Ghouls",
+                                url: "http://internet.is/olinn/01.%20We%20Are%20Scientists%20-%20Ghouls.mp3"
+                            }
+
+                            
             ];
 
             $("#thePlayer").musicPlayer(playlist, {

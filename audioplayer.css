@@ -53,6 +53,7 @@ body { background-color: #000;}
 				cursor: pointer;
 }
 
+
 #thePlayer ul li.playing {
 	/* TODO: add icon to show that its playing */
 	text-decoration: underline;
@@ -60,6 +61,7 @@ body { background-color: #000;}
 
 #thePlayer ul li:hover {
 	color: #f00;
+	color: #2242f7;
 }
 	
 
