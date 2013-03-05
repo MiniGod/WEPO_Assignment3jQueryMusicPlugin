@@ -85,6 +85,12 @@
 				$('#play').removeClass("pause");
 			}
 
+			var repeat = function() {
+				state.playing = true;
+				
+				
+			}
+
 			var next = function() {
 
 				var index = state.index;
@@ -177,6 +183,11 @@
 			$(this).find('#volume').on('change', function(e) {	
 				var value = $(this).get(0).value;
 				volume(value);
+			});
+
+			$(this).find('#repeat').on('click', function(e) {
+				repeat();
+
 			});
 
 			 

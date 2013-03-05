@@ -40,11 +40,17 @@
                         <meter id="progress" min="0" max="100" value="0"></meter><p id="songTime">4:32/0:35</p>
                     </div>
                     <div>
-                        <input type="checkbox" id="shuffle" /><label for ="shuffle">Shuffle</label>
+                        <button type="button" id="shuffle" class="repeatNone"/></button>
 
+                        <button id="repeat" class="repeatNone"></button>
+                        <button id="repeat" class="repeatOne"></button>
+                        <button id="repeat" class="repeatAll"></button>
+
+
+                        <!--
                         <input type="radio" id="repeat0" name="repeat" checked="checked" /><label for="repeat0">No Repeat</label>
                         <input type="radio" id="repeat1" name="repeat" /><label for="repeat1">Once</label>
-                        <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>
+                        <input type="radio" id="repeatall" name="repeat" /><label for="repeatall">All</label>-->
 
                         <!-- Volume thingamabob, not sure if we should use range or just jquery ui slider -->
                         <input type="range" id="volume" name="volume" min="0" value="100" max="100">                      
