@@ -112,8 +112,9 @@
 			}
 
 			var prev = function() {
-				state.index += playlist.length - 1;
-				state.index %= playlist.length;
+				var index = state.index;
+				index += playlist.length - 1;
+				index %= playlist.length;
 
 				playIndex(index);
 			}
