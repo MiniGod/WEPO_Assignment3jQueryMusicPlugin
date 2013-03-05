@@ -16,7 +16,7 @@
 			var root = $(this);
 
 			var player = $('<audio>');
-			$(this).append(player);
+			root.append(player);
 
 			var state =
 			{	playing: options.autoplay // Wether or not the player SHOULD be playing
@@ -52,14 +52,14 @@
 
 			var updatePlaylistUI = function() {
 				// Create playlist
-				var ul = root.find('#playlist ul').eq(0);
+				var ul = root.find('.playlist ul').eq(0);
 				ul.empty();
 
 				var song;
 				for (var i in playlist) {
 					if (song = getSongAtIndex(i)) {
 						var li = $('<li>').text(song.name).data('index', i).on('click', function() {
-							playIndex($(this).data('index'));
+							playIndex(root.data('index'));
 							play();
 						});
 
@@ -75,14 +75,14 @@
 			var play = function() {
 				state.playing = true;
 				player.get(0).play();
-				$('#play').addClass("pause");
+				root.find('.play').addClass("pause");
 				
 			}
 
 			var pause = function() {
 				state.playing = false;
 				player.get(0).pause();
-				$('#play').removeClass("pause");
+				root.find('.play').removeClass("pause");
 			}
 
 			var next = function() {
@@ -135,7 +135,7 @@
 					'repeatAll'
 				];
 
-				var el = root.find('#repeat');
+				var el = root.find('.repeat');
 				for (var i=0; i<3; i++) {
 					if (i == state.repeat) el.addClass(states[i]);
 					else el.removeClass(states[i]);
@@ -145,9 +145,9 @@
 			var shuffle = function() {
 				state.shuffle = !state.shuffle;
 				if (state.shuffle)
-					$('#shuffle').addClass("shuffleOn");
+					root.find('.shuffle').addClass("shuffleOn");
 				else
-					$('#shuffle').removeClass("shuffleOn");
+					root.find('.shuffle').removeClass("shuffleOn");
 			}
 
 			// Gets or sets the volume - between 0 to 100
@@ -167,7 +167,7 @@
 					return;
 				}
 
-				var lis = root.find('#playlist ul li')
+				var lis = root.find('.playlist ul li')
 					.removeClass('playing')
 					.eq(index).addClass('playing');
 
@@ -179,7 +179,7 @@
 			/*****************/
 			/* BUTTON EVENTS */
 			/*****************/
-			$(this).find('#play').on('click', function(e) {
+			root.find('.play').on('click', function(e) {
 				e.preventDefault();
 				//The play button now plays/pauses
 				if(state.playing == true)
@@ -188,20 +188,20 @@
 					play();
 			});
 
-			$(this).find('#volume').on('change', function(e) {	
-				var value = $(this).get(0).value;
+			root.find('.volume').on('change', function(e) {	
+				var value = root.get(0).value;
 				volume(value);
 			});
 
 			var clickEvents = [
-				['#nextSong', next],
-				['#prevSong', prev],
-				['#repeat', repeat],
-				['#shuffle', shuffle]
+				['.nextSong', next],
+				['.prevSong', prev],
+				['.repeat', repeat],
+				['.shuffle', shuffle]
 			];
 
 			for (var i=0; i<clickEvents.length; i++) {
-				$(this).find(clickEvents[i][0]).on('click', clickEvents[i][1]);
+				root.find(clickEvents[i][0]).on('click', clickEvents[i][1]);
 			}
 
 			 
@@ -213,7 +213,7 @@
 			player.on('timeupdate', function(e) {
 				// Update progress-bar
 				var percent = (this.currentTime / this.duration) * 100;
-				root.find('#progress').eq(0).attr('value', percent);
+				root.find('.progress').eq(0).attr('value', percent);
 
 				// Update time counter
 				var two = function(a) {
@@ -231,7 +231,7 @@
 				var songTime = [played, duration].join('/');
 				if (songTime.indexOf('NaN')!==-1) songTime = '0:00/0:00';
 
-				root.find('#songTime').text(songTime);
+				root.find('.songTime').text(songTime);
 			});
 
 			player.on('ended', next);
