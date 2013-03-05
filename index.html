@@ -17,41 +17,9 @@
 
   
 </head>
-<body>
-    
-        
-            <div id="thePlayer" class="audioPlayer">
-                <!--Working on more visual way for icons, either just using images or something.. -->
-                <!-- twitter bootstrap actually has a bunch of icons we could tap into, have to finish it tomorrow -->
-                  
-                    <div>
-
-                        <button class="prevSong" ></button>
-                        <button class="play"></button>           
-                        <button class="nextSong"></button>
-                        <button type="button" class="shuffle" /></button>                        
-                        <button class="repeat"></button>
-                        <meter class="progress" min="0" max="100" value="0"></meter><p class="songTime">4:32/0:35</p>
-                    </div>
-
-                    <div>
-                        <img src="volume.png" class="volumeIcon"></img>
-                        <input type="range" class="volume" name="volume" min="0" value="100" max="100">  
-                    </div>
-
-                    <div class="playlist">
-                        <h2>Playlist</h2>
-                            <ul>
-                                <li>SONGLIST</li>
-                            </ul>
-                    </div>
-
-                    
-            </div> <!-- this element will host the player!! -->
-
-            
-
-           
+<body>    
+    <div id="thePlayer"></div> <!-- this element will host the player!! -->
+     
     <script type="text/javascript" >
 
         $(document).ready(function () {

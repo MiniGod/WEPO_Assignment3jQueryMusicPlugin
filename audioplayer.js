@@ -1,6 +1,29 @@
 //jquery implementation of audioplayer
 
 (function($) {
+
+	var html = '\
+	<div>\
+		<button class="prevSong" ></button>\
+		<button class="play"></button>\
+		<button class="nextSong"></button>\
+		<button type="button" class="shuffle" /></button>\
+		<button class="repeat"></button>\
+		<meter class="progress" min="0" max="100" value="0"></meter><p class="songTime">0:00/0:00</p>\
+	</div>\
+	\
+	<div>\
+		<img src="volume.png" class="volumeIcon"></img>\
+		<input type="range" class="volume" name="volume" min="0" value="100" max="100">\
+	</div>\
+	\
+	<div class="playlist">\
+	<h2>Playlist</h2>\
+		<ul>\
+			<li>SONGLIST</li>\
+		</ul>\
+	</div>';
+
 	var defaultOptions = {
 		'autoplay': false,
 		'repeat': 0, // 0: Off, 1: Repeat One, 2: Repeat Playlist
@@ -13,7 +36,7 @@
 		// `this` is an array of elements
 		return this.each(function() {
 			// ´this´ is now one of the elements
-			var root = $(this);
+			var root = $(this).addClass('audioPlayer').html(html);
 
 			var player = $('<audio>');
 			root.append(player);
