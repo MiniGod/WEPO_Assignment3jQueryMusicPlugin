@@ -19,12 +19,6 @@
     <!-- TODO: your MusicPlayer jQuery plugin reference!!!! -->
     <script src="audioplayer.js"></script>
     <!-- JQUERY UI for player look -->
-   
-  
-
-
- 
-
 
 </head>
 <body>
@@ -33,9 +27,13 @@
             <div id="thePlayer" class="span8 offset2">
                 <!--Working on more visual way for icons, either just using images or something.. -->
                 <!-- twitter bootstrap actually has a bunch of icons we could tap into, have to finish it tomorrow -->
+               
                 <button id="prevSong"><p>previous song</button>
                 <!--<button id="rewind">rewind</button>-->
-                <button id="play">Play</button>
+
+                <button id="play"><a href="#"></a></button>
+                
+
                 <!--<button id="fforward">fast forward</button>-->
                 <button id="nextSong">next song</button>
                 <meter id="progress" min="0" max="100" value="0"></meter>
@@ -49,6 +47,7 @@
                 <!-- Volume thingamabob, not sure if we should use range or just jquery ui slider -->
                 <input type="range" id="volume" name="volume" min="0" value="100" max="100">
             </div> <!-- this element will host the player!! -->
+
     </div>
 
     <div class="span4 offset4">

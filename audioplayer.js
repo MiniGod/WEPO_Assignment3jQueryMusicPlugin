@@ -61,6 +61,7 @@
 				if (state.playing) player.get(0).play();
 			}
 
+
 			// Gets or sets the volume - 0 to 100
 			var volume = function(vol) {
 				if (vol) return player.get(0).volume = vol/100;
@@ -75,13 +76,19 @@
 			$(this).find('#play').on('click', function(e) {
 				e.preventDefault();
 				//The play button now plays/pauses
+
+				
+
 				if(state.playing == true)
 				{
 					pause();
+
 				}
 				else
 				{
+
 					play();
+
 				}
 				
 			});
