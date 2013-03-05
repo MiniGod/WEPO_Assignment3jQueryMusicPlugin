@@ -85,26 +85,6 @@
 				$('#play').removeClass("pause");
 			}
 
-			var repeat = function() {
-				state.repeat++;
-				state.repeat %= 3;
-
-				// 0: off
-				// 1: one
-				// 2: all
-				var states = [
-					'repeatNone',
-					'repeatOne',
-					'repeatAll'
-				];
-
-				var el = root.find('#repeat');
-				for (var i=0; i<3; i++) {
-					if (i == state.repeat) el.addClass(states[i]);
-					else el.removeClass(states[i]);
-				}
-			}
-
 			var next = function() {
 
 				var index = state.index;
@@ -142,9 +122,32 @@
 				if (state.playing) player.get(0).play();
 			}
 
+			var repeat = function() {
+				state.repeat++;
+				state.repeat %= 3;
+
+				// 0: off
+				// 1: one
+				// 2: all
+				var states = [
+					'repeatNone',
+					'repeatOne',
+					'repeatAll'
+				];
+
+				var el = root.find('#repeat');
+				for (var i=0; i<3; i++) {
+					if (i == state.repeat) el.addClass(states[i]);
+					else el.removeClass(states[i]);
+				}
+			}
+
 			var shuffle = function() {
-				//Missing shuffle furniz
-				$('#shuffle').toggleClass("shuffleOn");
+				state.shuffle = !state.shuffle;
+				if (state.shuffle)
+					$('#shuffle').addClass("shuffleOn");
+				else
+					$('#shuffle').removeClass("shuffleOn");
 			}
 
 			// Gets or sets the volume - between 0 to 100
@@ -160,7 +163,7 @@
 				var song = getSongAtIndex(state.index);
 				if (!song) {
 					state.index = -1;
-					stop();
+					pause();
 					return;
 				}
 
@@ -172,10 +175,6 @@
 
 				if (state.playing) player.get(0).play();
 			}
-
-
-
-			// need to implement the loop() command to loop song.
 
 			/*****************/
 			/* BUTTON EVENTS */
@@ -189,31 +188,21 @@
 					play();
 			});
 
-			$(this).find('#nextSong').on('click', function(e) {	
-				e.preventDefault();
-				next();
-			});
-
-			$(this).find('#prevSong').on('click', function(e) {	
-				e.preventDefault();
-				prev();
-			});
-
-			//Volume control implementation, maybe a jquery slider is more suitable
 			$(this).find('#volume').on('change', function(e) {	
 				var value = $(this).get(0).value;
 				volume(value);
 			});
 
-			$(this).find('#repeat').on('click', function(e) {
-				repeat();
+			var clickEvents = [
+				['#nextSong', next],
+				['#prevSong', prev],
+				['#repeat', repeat],
+				['#shuffle', shuffle]
+			];
 
-			});
-
-			$(this).find('#shuffle').on('click', function(e) {
-				shuffle();
-
-			});
+			for (var i=0; i<clickEvents.length; i++) {
+				$(this).find(clickEvents[i][0]).on('click', clickEvents[i][1]);
+			}
 
 			 
 
@@ -252,7 +241,18 @@
 
 			/***************/
 			/***************/
+			
+			// Update repeat button (ugly)
+			state.repeat--;
+			repeat();
+
+			// Update shuffle button (ugly again)
+			state.shuffle = !state.shuffle;
+			shuffle();
+
+			// Update playlist
 			updatePlaylistUI();
+			// Load first song into <audio>
 			next();
 		});
 	};
